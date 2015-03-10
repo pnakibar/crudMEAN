@@ -1,0 +1,48 @@
+<%- include('header'); %>
+<div class='row'>
+	<div class="col-md-6">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Force Level</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% alunos.forEach(function(user){ %>
+				<% if (user.name) {%>
+				<tr>
+					
+					<td><%- user.name %></td>
+					<td><%- user.age %></td>
+					<td><%- user.forcelevel %></td>
+					<td><button href="equipe" type="button" class="btn btn-xs btn-danger">Remover</button></td>
+				</tr>
+				<% } %>
+				<% }); %>    
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<form action="/aluno" method="post">
+	<fieldset>
+		<label for="nome">Nome:</label>
+		<input type="text" id="nome" name="name" placeholder="Seu nome" />
+		
+		<label for="idade">Idade:</label>
+		<input type="text" id="idade" name="age" placeholder="Sua idade" />
+
+		<label for="forcelevel">Nível na força:</label>
+		<input type="text" id="forcelevel" name="forcelevel" placeholder="Seu nivel" />            		
+
+		<input type="submit" value="Enviar" class="btn btn-xs btn-primary"/>
+	</fieldset>
+</form>
+
+
+
+<%- include('footer'); %>
