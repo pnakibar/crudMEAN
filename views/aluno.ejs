@@ -1,4 +1,5 @@
 <%- include('header'); %>
+
 <div class='row'>
 	<div class="col-md-6">
 		<table class="table table-striped">
@@ -14,11 +15,10 @@
 				<% alunos.forEach(function(user){ %>
 				<% if (user.name) {%>
 				<tr>
-					
 					<td><%- user.name %></td>
 					<td><%- user.age %></td>
 					<td><%- user.forcelevel %></td>
-					<td><button href="equipe" type="button" class="btn btn-xs btn-danger">Remover</button></td>
+					<td><button href="equipe" data-id=<%- user.id %> type="button" class="btn btn-xs btn-danger remove-button">Remover</button></td>
 				</tr>
 				<% } %>
 				<% }); %>    

@@ -10,6 +10,7 @@ router.get('/',function(req,res,next){
 
 
 /* GET home page. */
+
 router.get('/aluno/', function(req, res, next) {
 	Aluno.find(function(err, alunos){
 		res.render('aluno', {alunos:alunos});
@@ -29,11 +30,9 @@ router.get('/aluno/:id', function(req, res, next) {
 
 
 router.post('/aluno/', function(req, res, next) {
-	console.log(req.body.name)
-	console.log(req.body.age)
   	Aluno.create(req.body, function (err, post) {
     	if (err) return next(err);
-    	res.json(post);
+    	res.redirect('/aluno/');
   });
 });
 
@@ -45,8 +44,9 @@ router.put('/aluno/:id', function(req, res, next) {
 });
 
 /* DELETE /todos/:id */
-router.delete('/aluno/:id', function(req, res, next) {
-  Aluno.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+router.delete('/aluno/', function(req, res, next) {
+
+  Aluno.findByIdAndRemove(req.body.id, req.body, function (err, post) {
     if (err) return next(err);
     res.json(post);
 	});
