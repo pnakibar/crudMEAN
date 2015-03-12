@@ -1,14 +1,14 @@
 <%- include('header'); %>
-
-<div class='row'>
-	<div class="col-md-6">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Age</th>
-					<th>Force Level</th>
-					<th><th>
+<!-- tabela alunos -->
+<div class="container theme-showcase" role="main">
+	<div class='row'>
+		<div class="col-md-6">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Age</th>
+						<th>Force Level</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -21,7 +21,7 @@
 
 						<td><button data-id=<%- user.id %> type="remove-button" class="btn btn-xs btn-danger remove-button">Remover</button></td>
 
-						<td><button data-id=<%-user.id%> type="update-button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#exampleModal"  ->Atualizar</button></td>
+						<td><button data-id=<%-user.id%> type="update-button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal-put"->Atualizar</button></td>
 
 					</tr>
 					<% } %>
@@ -31,29 +31,16 @@
 		</div>
 	</div>
 
+	<!-- abrir modal inserir aluno -->
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-post" data-w>Inserir novo aluno</button>
 
-	<form action="/aluno" method="post">
-		<fieldset>
-			<label for="nome">Nome:</label>
-			<input type="text" id="nome" name="name" placeholder="Seu nome" />
-
-			<label for="idade">Idade:</label>
-			<input type="text" id="idade" name="age" placeholder="Sua idade" />
-
-			<label for="forcelevel">Nível na força:</label>
-			<input type="text" id="forcelevel" name="forcelevel" placeholder="Seu nivel" />            		
-
-			<input type="submit" value="Enviar" class="btn btn-xs btn-primary"/>	
-		</fieldset>
-	</form>
-
-
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!--modal atualizar-->
+	<div class="modal fade" id="modal-put" tabindex="-1" role="dialog" aria-labelledby="modal-putlLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="exampleModalLabel">New message</h4>
+					<h4 class="modal-title" id="modal-putlLabel">Editar aluno:</h4>
 				</div>
 				<div class="modal-body">
 					<form>
@@ -71,9 +58,6 @@
 							<label for="recipient-name" class="control-label">Nivel na Força:</label>
 							<input type="text" class="form-control" id="forcelevel">
 						</div>
-						
-
-
 					</form>
 				</div>
 				<div class="modal-footer">
@@ -83,5 +67,43 @@
 			</div>
 		</div>
 	</div>
+</div>
 
-	<%- include('footer'); %>
+
+
+<!--modal pro post -->
+<div class="modal fade" id="modal-post" tabindex="-1" role="dialog" aria-labelledby="modal-postLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="modal-postLabel">Novo aluno</h4>
+			</div>
+
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="recipient-name" class="control-label">Nome:</label>
+						<input type="text" class="form-control" id="name">
+					</div>
+
+					<div class="form-group">
+						<label for="recipient-name" class="control-label">Idade:</label>
+						<input type="text" class="form-control" id="age">
+					</div>
+
+					<div class="form-group">
+						<label for="recipient-name" class="control-label">Nivel na Força:</label>
+						<input type="text" class="form-control" id="forcelevel">
+					</div>
+				</form>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+				<button type="button" class="btn btn-primary post-button">Enviar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<%- include('footer'); %>
