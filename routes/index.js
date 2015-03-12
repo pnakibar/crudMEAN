@@ -22,7 +22,7 @@ router.get('/teste/', function(req, res, next) {
 });
 
 router.get('/aluno/:id', function(req, res, next) {
-	Aluno.findByIdAndUpdate(req.params.id, req.body, function (err, aluno) {
+	 Aluno.findByIdAndUpdate(req.params.id, req.body, function (err, aluno) {
     	if (err) return next(err);
     	res.send(aluno);
 	});

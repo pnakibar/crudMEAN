@@ -9,40 +9,79 @@
 					<th>Age</th>
 					<th>Force Level</th>
 					<th><th>
-				</tr>
-			</thead>
-			<tbody>
-				<% alunos.forEach(function(user){ %>
-				<% if (user.name) {%>
-				<tr>
-					<td><%- user.name %></td>
-					<td><%- user.age %></td>
-					<td><%- user.forcelevel %></td>
-					<td><button href="equipe" data-id=<%- user.id %> type="button" class="btn btn-xs btn-danger remove-button">Remover</button></td>
-				</tr>
-				<% } %>
-				<% }); %>    
-			</tbody>
-		</table>
+					</tr>
+				</thead>
+				<tbody>
+					<% alunos.forEach(function(user){ %>
+					<% if (user.name) {%>
+					<tr>
+						<td><%- user.name %></td>
+						<td><%- user.age %></td>
+						<td><%- user.forcelevel %></td>
+
+						<td><button data-id=<%- user.id %> type="remove-button" class="btn btn-xs btn-danger remove-button">Remover</button></td>
+
+						<td><button data-id=<%-user.id%> type="update-button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#exampleModal"  ->Atualizar</button></td>
+
+					</tr>
+					<% } %>
+					<% }); %>    
+				</tbody>
+			</table>
+		</div>
 	</div>
-</div>
 
 
-<form action="/aluno" method="post">
-	<fieldset>
-		<label for="nome">Nome:</label>
-		<input type="text" id="nome" name="name" placeholder="Seu nome" />
-		
-		<label for="idade">Idade:</label>
-		<input type="text" id="idade" name="age" placeholder="Sua idade" />
+	<form action="/aluno" method="post">
+		<fieldset>
+			<label for="nome">Nome:</label>
+			<input type="text" id="nome" name="name" placeholder="Seu nome" />
 
-		<label for="forcelevel">Nível na força:</label>
-		<input type="text" id="forcelevel" name="forcelevel" placeholder="Seu nivel" />            		
+			<label for="idade">Idade:</label>
+			<input type="text" id="idade" name="age" placeholder="Sua idade" />
 
-		<input type="submit" value="Enviar" class="btn btn-xs btn-primary"/>
-	</fieldset>
-</form>
+			<label for="forcelevel">Nível na força:</label>
+			<input type="text" id="forcelevel" name="forcelevel" placeholder="Seu nivel" />            		
+
+			<input type="submit" value="Enviar" class="btn btn-xs btn-primary"/>	
+		</fieldset>
+	</form>
 
 
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="exampleModalLabel">New message</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="recipient-name" class="control-label">Nome:</label>
+							<input type="text" class="form-control" id="name">
+						</div>
 
-<%- include('footer'); %>
+						<div class="form-group">
+							<label for="recipient-name" class="control-label">Idade:</label>
+							<input type="text" class="form-control" id="age">
+						</div>
+
+						<div class="form-group">
+							<label for="recipient-name" class="control-label">Nivel na Força:</label>
+							<input type="text" class="form-control" id="forcelevel">
+						</div>
+						
+
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					<button type="button" class="btn btn-primary send-button">Enviar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<%- include('footer'); %>
